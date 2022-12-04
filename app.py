@@ -65,6 +65,7 @@ def get_job_summary(link):
 # Initiate list to append each job into    
 jobs = []
 jobs_skills_matched = []
+SKILLS = ('django', 'python', 'sql', 'flask', 'javascript', 'junior')
 
 # Get jobs from more pages
 for i in range(1, 2):
@@ -86,10 +87,12 @@ def analyze_job(jobs):
         # create new list of all words from description
         words = summary.split()
 
-        # check keywords in words
-        
+        # check keywords in job description
+        match = [i for i in SKILLS if i in words]
         
         # if match, append job link to jobs_skills_matched
+        if match:
+            jobs_skills_matched.append(job['link'])
 
 
 def sent_email(jobs):
