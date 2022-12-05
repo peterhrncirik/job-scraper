@@ -12,6 +12,9 @@ from rich.progress import track
 # Text analysis
 from rake_nltk import Rake
 
+# Email
+from notify import notify
+
 
 def extract(page):
     
@@ -102,18 +105,19 @@ def analyze_job(jobs):
         
         # if match, append job link to jobs_skills_matched
         if match:
-            jobs_skills_matched.append({
-                'link': job['link'],
-                # the more skills matched, the higher score
-                'score': len(match), 
-                'skills': match,
-            })
+            # jobs_skills_matched.append({
+            #     'link': job['link'],
+            #     # the more skills matched, the higher score
+            #     'score': len(match), 
+            #     'skills': match,
+            # })
+            # Using simpler style because of email
+            jobs_skills_matched.append(f'{len(match)} - {job["link"]}')
+            
     return
-
-
-
-def sent_email(jobs):
-    pass
     
 analyze_job(jobs)
+
+# send email
+notify(jobs=sorted(jobs_skills_matched, reverse=True))
 
