@@ -11,15 +11,12 @@ At the moment scrapes Profesia jobs. Analyzes job description for keywords (skil
 # Usage
 `python app.py -position`
 
-#TO DO:
+# To do:
 
-* [ ] Checkbox1
+* [x] analyze job description for keywords to filter out more suitable positions
+* [ ] improve this matching algorithm
+* [x] send email with found jobs
+* [x] add support for different pages
+* [ ] make more dynamic - define skills dynamically etc.   
 
-* [ ] Checkbox2
 
-* [x] Checkbox selected
-
-    analyze job description for keywords to filter out more suitable positions
-    send email notification with found jobs
-    add support for different pages
-    make more dynamic (right now looks for python jobs only)
