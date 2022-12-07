@@ -12,7 +12,10 @@ At the moment scrapes Profesia jobs. Analyzes job description for keywords (skil
 `python app.py -position`
 
 at the moment skills are not dynamic, they are defind in the constant:
-`SKILLS = ('django', 'django developer', 'django junior developer', 'python developer', 'python junior developer', 'python junior', 'python', 'sql', 'flask', 'javascript', 'junior', 'css', 'html', 'html/css')`
+
+```python
+SKILLS = ('django', 'django developer', 'django junior developer', 'python developer', 'python junior developer', 'python junior', 'python', 'sql', 'flask', 'javascript', 'junior', 'css', 'html', 'html/css')
+```
 
 # To do:
 
