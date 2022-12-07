@@ -1,4 +1,5 @@
 import requests
+import argparse
 from bs4 import BeautifulSoup
 import pandas as pd
 
@@ -15,11 +16,21 @@ from rake_nltk import Rake
 # Email
 from notify import notify
 
+# Usage
+parser = argparse.ArgumentParser(description='Job position')
+parser.add_argument('-p', default='python', help='what position are you looking for?', type=str)
+args = parser.parse_args()
+
+# Initiate list to append each job into    
+jobs = []
+jobs_skills_matched = []
+SKILLS = ('django', 'django developer', 'django junior developer', 'python developer', 'python junior developer', 'python junior', 'python', 'sql', 'flask', 'javascript', 'junior', 'css', 'html', 'html/css')
+
 
 def extract(page):
     
     headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:107.0) Gecko/20100101 Firefox/107.0'}
-    url = f'https://www.profesia.sk/praca/bratislavsky-kraj/?remote_work=2&search_anywhere=python&page_num={page}'
+    url = f'https://www.profesia.sk/praca/bratislavsky-kraj/?remote_work=2&search_anywhere={args.p}&page_num={page}'
     r = requests.get(url, headers)
     soup = BeautifulSoup(r.content, 'html.parser')
     return soup
@@ -33,7 +44,7 @@ def transform(soup):
     divs = soup.find_all('li', class_ = 'list-row')
 
     # Iterate over each job div
-    for item in track(divs, description='Extracting job infos...'):
+    for item in track(divs[:3], description='Extracting job infos...'):
         
         # Print progress bar
         time.sleep(.3)
@@ -76,12 +87,6 @@ def get_job_summary(link):
     soup = BeautifulSoup(r.content, 'html.parser')
     return soup.find('main', attrs={'id': 'detail'}).text
     
-    
-
-# Initiate list to append each job into    
-jobs = []
-jobs_skills_matched = []
-SKILLS = ('django', 'python', 'sql', 'flask', 'javascript', 'junior', 'css', 'html', 'html/css')
 
 # Get jobs from more pages
 for i in range(1, 3):
@@ -105,14 +110,7 @@ def analyze_job(jobs):
         
         # if match, append job link to jobs_skills_matched
         if match:
-            # jobs_skills_matched.append({
-            #     'link': job['link'],
-            #     # the more skills matched, the higher score
-            #     'score': len(match), 
-            #     'skills': match,
-            # })
-            # Using simpler style because of email
-            jobs_skills_matched.append(f'{len(match)} - {job["link"]}')
+            jobs_skills_matched.append(f'Score: {len(match)} | Skills: {match} | {job["link"]}')
             
     return
     

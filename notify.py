@@ -7,7 +7,7 @@ load_dotenv()
 
 def notify(jobs, to_email=os.getenv('TO'), server=os.getenv('SERVER'), port=os.getenv('PORT'), from_email=os.getenv('FROM'), password=os.getenv('PASSWORD')):
 
-    print(f'With love from {from_email} to {to_email}')
+    print(f'Sending Email...')
 
     # The message
     subject = 'Jobs you might like'
@@ -23,3 +23,5 @@ def notify(jobs, to_email=os.getenv('TO'), server=os.getenv('SERVER'), port=os.g
     server.login(from_email, password)
     server.send_message(msg)
     server.quit()
+    
+    print('Email sent.')
