@@ -17,6 +17,7 @@ At the moment scrapes Profesia jobs. Analyzes job description for keywords (skil
 * [ ] improve this matching algorithm
 * [x] send email with found jobs
 * [x] add support for different pages
-* [ ] make more dynamic - define skills dynamically etc.   
+* [ ] make more dynamic - define skills dynamically etc.
+* [ ] keep score of jobs already checked/applied to
 
 
