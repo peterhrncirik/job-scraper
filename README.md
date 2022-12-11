@@ -7,6 +7,7 @@ At the moment scrapes Profesia jobs. Analyzes job description for keywords (skil
 * search job based on your prefered position (default python)
 * define skills to find more suitable positions
 * send E-Mail notification with the jobs that matched your skills, sorted with score from most skill matches to least
+* sends only jobs that haven't been already seen 
 
 # Usage
 `python app.py -position`
