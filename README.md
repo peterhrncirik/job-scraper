@@ -22,8 +22,8 @@ SKILLS = ('django', 'django developer', 'django junior developer', 'python devel
 * [x] analyze job description for keywords to filter out more suitable positions
 * [ ] improve this matching algorithm
 * [x] send email with found jobs
-* [x] add support for different pages
+* [ ] add support for different pages
 * [ ] make more dynamic - define skills dynamically etc.
-* [ ] keep score of jobs already checked/applied to
+* [x] keep score of jobs already checked/applied to
 
 
