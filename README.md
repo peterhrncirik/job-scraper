@@ -1,7 +1,6 @@
 # Job scraper
 
-Looking for a job can be exhausting. Made this script for my personal use to make the process easier.
-At the moment scrapes Profesia jobs. Analyzes job description for keywords (skills you specify) to find more suitable positions.
+Analyzes job description for keywords (skills you specify) to find more suitable positions & sends e-mail with found matches.
 
 # Features
 * search job based on your prefered position (default python)
